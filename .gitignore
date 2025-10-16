@@ -5,3 +5,4 @@ secret.*
 TLS
 inventory.ini
 secrets.yml
+terraform/.terraform.lock.hcl

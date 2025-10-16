@@ -13,3 +13,7 @@ output "server_2_ip" {
 output "postgresql_host" {
   value = yandex_mdb_postgresql_cluster.terradb.host[0].fqdn
 }
+
+output "datadog_monitor_url" {
+  value = "https://app.datadoghq.eu/monitors/${datadog_monitor.HTTP_Check_2.id}"
+}

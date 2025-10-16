@@ -7,6 +7,9 @@ decrypt:
 terraform-init:
 	terraform init -backend-config=secret.backend.tfvars
 
+terraform-upgrade:
+	terraform init -upgrade -backend-config=secret.backend.tfvars
+
 terraform-migrate:
 	terraform init -migrate-state -backend-config=secret.backend.tfvars
 
@@ -22,9 +25,6 @@ terraform-destroy:
 terraform-show:
 	terraform show
 
-terraform-graph:
-	terraform graph
-
 install-deps:
 	ansible-galaxy install -r requirements.yml
 
@@ -36,3 +36,6 @@ prepare:
 
 redmine:
 	ansible-playbook -i inventory.ini playbook.yml --tags redmine
+
+datadog:
+	ansible-playbook -i inventory.ini playbook.yml --tags datadog
