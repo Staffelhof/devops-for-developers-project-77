@@ -1,25 +1,38 @@
-edit-vault:
-	ansible-vault edit ansible/group_vars/all/vault.yml
-create-vault:
-	ansible-vault encrypt ansible/group_vars/all/vault.yml
+encrypt:
+	ansible-vault encrypt terraform/secret.auto.tfvars ansible/group_vars/webservers/secrets.yml --vault-password-file .vault-password
 
-init:
-	cd terraform && terraform init -backend-config=secret.backend.tfvars
+decrypt:
+	ansible-vault decrypt terraform/secret.auto.tfvars ansible/group_vars/webservers/secrets.yml --vault-password-file .vault-password
 
-i-migrate:
-	cd terraform && terraform init -migrate-state -backend-config=secret.backend.tfvars
+terraform-init:
+	terraform init -backend-config=secret.backend.tfvars
 
-plan:
-	cd terraform && terraform plan
+terraform-migrate:
+	terraform init -migrate-state -backend-config=secret.backend.tfvars
 
-apply:
-	cd terraform && terraform apply
+terraform-plan:
+	terraform plan
 
-destroy:
-	cd terraform && terraform destroy
+terraform-apply:
+	terraform apply
 
-show:
-	cd terraform && terraform show
+terraform-destroy:
+	terraform destroy
 
-graph:
-	cd terraform && terraform graph
+terraform-show:
+	terraform show
+
+terraform-graph:
+	terraform graph
+
+install-deps:
+	ansible-galaxy install -r requirements.yml
+
+deploy:
+	ansible-playbook -i inventory.ini playbook.yml
+
+prepare:
+	ansible-playbook -i inventory.ini playbook.yml --tags setup
+
+redmine:
+	ansible-playbook -i inventory.ini playbook.yml --tags redmine

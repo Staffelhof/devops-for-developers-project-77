@@ -3,3 +3,5 @@ secret.*
 .idea/
 .terraform
 TLS
+inventory.ini
+secrets.yml
