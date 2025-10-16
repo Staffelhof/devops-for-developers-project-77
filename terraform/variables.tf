@@ -61,3 +61,7 @@ variable "tls_privkey_pem_path" {
   type        = string
   sensitive   = true
 }
+
+variable "domain_name" {
+  type        = string
+}
