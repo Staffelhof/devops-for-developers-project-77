@@ -1,3 +1,3 @@
 [webservers]
-server-1 ansible_host=<VM 1 IP> ansible_user=<VM 1 USER> ansible_ssh_private_key_file=<your/path/to/private_key>
-server-2 ansible_host=<VM 2 IP> ansible_user=<VM 1 USER> ansible_ssh_private_key_file=<your/path/to/private_key>
+server-1 ansible_host=${server_1_ip} ansible_user=${server_user} ansible_ssh_private_key_file=${server_keypath}
+server-2 ansible_host=${server_2_ip} ansible_user=${server_user} ansible_ssh_private_key_file=${server_keypath}
